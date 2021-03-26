@@ -1,0 +1,36 @@
+{
+  "manifest_version":2,
+  "name":"System Status",
+  "version":"0.001",
+  "web_accessible_resources":[
+    "app-icon-192x192.png"
+  ],
+  "content_scripts":[
+    { "matches":[
+      "http://localhost:8080/"
+    ],
+      "js":["ploty.min.js", "content.js"]
+    },
+    {"matches":[
+      "http://localhost:8080/status.html"
+    ],
+  "js":["status.js"]}
+  ],
+  "background":{
+    "scripts":["background.js"]
+  },
+  "browser_action":{
+    "default_icon":"app-icon-192x192.png"
+  },
+  "permissions":[
+    "system.cpu",
+    "system.display",
+    "system.memory",
+    "system.storage"
+  ],
+  "externally_connectable": {
+    "matches": [
+      "http://localhost:8080/"
+    ]
+  }
+}
